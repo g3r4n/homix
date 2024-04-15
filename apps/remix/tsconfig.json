@@ -1,6 +1,7 @@
 {
   "extends": "@acme/tsconfig/base.json",
   "compilerOptions": {
+    "types": ["@remix-run/node", "vite/client"],
     "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "preserve",
     "baseUrl": ".",

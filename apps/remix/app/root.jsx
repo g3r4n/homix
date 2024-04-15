@@ -18,6 +18,7 @@ import {
         </head>
         <body>
           <h1>Hello world!</h1>
+          <span>Powered by Homix</span>
           <Outlet />
   
           <Scripts />

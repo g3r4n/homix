@@ -4,11 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm with-env tsx watch ./src/index.tsx",
+    "dev": "remix vite:dev",
     "build": "remix vite:build",
-    "run": "remix-serve build/server/index.js",
-    "test": "echo 'Add test script here'",
-    "lint": "echo 'Add lint script here'",
+    "serve": "remix-serve build/server/index.js",
+    "lint": "eslint",
     "with-env": "dotenv -e ../../.env --"
   },
   "devDependencies": {

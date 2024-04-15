@@ -4,9 +4,12 @@ import { Hono } from "hono";
 import { remix } from "remix-hono/handler";
 
 /* type your Hono variables (used with c.get/c.set) here */
-type Variables = {};
-
-type ContextEnv = { Variables: Variables };
+interface Variables extends Record<string, unknown> {
+  user?: { id: number; name: string };
+}
+interface ContextEnv {
+  Variables: Variables;
+}
 
 const honoRemixApp = new Hono<ContextEnv>();
 

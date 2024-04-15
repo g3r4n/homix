@@ -2,9 +2,11 @@
   "name": "@acme/remix",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "pnpm with-env tsx watch ./src/index.tsx",
-    "build": "echo 'Add build script here'",
+    "build": "remix vite:build",
+    "run": "remix-serve build/server/index.js",
     "test": "echo 'Add test script here'",
     "lint": "echo 'Add lint script here'",
     "with-env": "dotenv -e ../../.env --"
@@ -13,13 +15,20 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*"
+    "@acme/tsconfig": "workspace:*",
+    "vite": "5.2.8"
   },
   "dependencies": {
-    "@remix-run/dev": "^2.8.1",
-    "hono": "^4.2.4",
-    "i18next": "^23.11.2",
-    "remix-hono": "^0.0.16",
-    "remix-i18next": "^6.1.0"
+    "@remix-run/dev": "2.8.1",
+    "@remix-run/node": "2.8.1",
+    "@remix-run/react": "2.8.1",
+    "@remix-run/serve": "2.8.1",
+    "hono": "4.2.4",
+    "i18next": "23.11.2",
+    "isbot": "4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remix-hono": "0.0.16",
+    "remix-i18next": "6.1.0"
   }
 }

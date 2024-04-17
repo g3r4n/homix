@@ -1,14 +1,23 @@
-import NextAuth from "next-auth";
+import Discord from "@auth/core/providers/discord";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { AuthConfig } from "@hono/auth-js";
 
-import { authConfig } from "./config";
+import { db, tableCreator } from "@acme/db";
 
-export type { Session } from "next-auth";
+export const authConfig = {
+  adapter: DrizzleAdapter(db, tableCreator),
+  providers: [Discord],
+  callbacks: {
+    session: (opts) => {
+      if (!("user" in opts)) throw "unreachable with session strategy";
 
-const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth(authConfig);
-
-export { GET, POST, auth, signIn, signOut };
+      return {
+        ...opts.session,
+        user: {
+          ...opts.session.user,
+          id: opts.user.id,
+        },
+      };
+    },
+  },
+} satisfies AuthConfig;

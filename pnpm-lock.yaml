@@ -236,9 +236,15 @@ importers:
       '@acme/db':
         specifier: workspace:*
         version: link:../db
+      '@auth/core':
+        specifier: ^0.28.0
+        version: 0.28.1
       '@auth/drizzle-adapter':
         specifier: ^0.8.1
         version: 0.8.1
+      '@hono/auth-js':
+        specifier: ^1.0.3
+        version: 1.0.3(@auth/core@0.28.1)(hono@4.2.4)(react@18.2.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.9.2
         version: 0.9.2(typescript@5.4.5)(zod@3.22.4)
@@ -3260,6 +3266,19 @@ packages:
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
     dependencies:
       '@hapi/hoek': 9.3.0
+    dev: false
+
+  /@hono/auth-js@1.0.3(@auth/core@0.28.1)(hono@4.2.4)(react@18.2.0):
+    resolution: {integrity: sha512-g4U6oRbsTRnEm7wc5v9VgbCzBr11ef+bFYs7KgWsXt3TfRCGAPuVFaS+q6uFNJsGSBmX56U8nhLPi46gg/zmRQ==}
+    engines: {node: '>=18.4.0'}
+    peerDependencies:
+      '@auth/core': 0.*
+      hono: '>=3.*'
+      react: '>=18'
+    dependencies:
+      '@auth/core': 0.28.1
+      hono: 4.2.4
+      react: 18.2.0
     dev: false
 
   /@hookform/resolvers@3.3.4(react-hook-form@7.51.1):

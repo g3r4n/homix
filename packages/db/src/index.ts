@@ -1,7 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
-import { connectionStr } from "./config";
 import * as auth from "./schema/auth";
 import * as post from "./schema/post";
 
@@ -12,5 +11,9 @@ export { pgTable as tableCreator } from "./schema/_table";
 export * from "drizzle-orm/sql";
 export { alias } from "drizzle-orm/mysql-core";
 
-const queryClient = postgres("postgres://postgres:postgres@0.0.0.0:5432/db");
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not set");
+}
+
+const queryClient = postgres(process.env.DATABASE_URL);
 export const db = drizzle(queryClient, { schema });

@@ -45,7 +45,7 @@ export const accounts = pgTable(
     compoundKey: primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
-    userIdIdx: index("userId_idx").on(account.userId),
+    userIdIdx: index("accout_userId_idx").on(account.userId),
   }),
 );
 
@@ -63,7 +63,7 @@ export const sessions = pgTable(
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (session) => ({
-    userIdIdx: index("userId_idx").on(session.userId),
+    userIdIdx: index("session_userId_idx").on(session.userId),
   }),
 );
 

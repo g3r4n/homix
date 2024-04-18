@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { serial, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { serial, timestamp, varchar } from "drizzle-orm/pg-core";
 
 import { pgTable } from "./_table";
 
@@ -10,5 +10,5 @@ export const post = pgTable("post", {
   createdAt: timestamp("created_at")
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  updatedAt: timestamp("updatedAt").onUpdateNow(),
+  updatedAt: timestamp("updatedAt"),
 });

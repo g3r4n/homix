@@ -6,7 +6,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "module": "esnext"
+    "module": "esnext",
+    "paths": {
+      "@/*": ["./app/*"]
+    }
   },
   "include": ["."],
   "exclude": ["node_modules"]

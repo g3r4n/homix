@@ -33,17 +33,17 @@ importers:
         specifier: 1.6.3
         version: 1.6.3(@babel/runtime@7.24.4)(react-native@0.73.6)(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^5.29.0
-        version: 5.29.0(react@18.2.0)
+        specifier: 5.29.2
+        version: 5.29.2(react@18.2.0)
       '@trpc/client':
-        specifier: 11.0.0-rc.334
-        version: 11.0.0-rc.334(@trpc/server@11.0.0-rc.334)
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
       '@trpc/react-query':
-        specifier: 11.0.0-rc.334
-        version: 11.0.0-rc.334(@tanstack/react-query@5.29.0)(@trpc/client@11.0.0-rc.334)(@trpc/server@11.0.0-rc.334)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@tanstack/react-query@5.29.2)(@trpc/client@11.0.0-rc.348)(@trpc/server@11.0.0-rc.348)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: 11.0.0-rc.334
-        version: 11.0.0-rc.334
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348
       expo:
         specifier: ~50.0.14
         version: 50.0.14(@babel/core@7.24.4)(@react-native/babel-preset@0.73.21)
@@ -138,6 +138,9 @@ importers:
 
   apps/remix:
     dependencies:
+      '@acme/api':
+        specifier: workspace:^
+        version: link:../../packages/api
       '@acme/auth':
         specifier: workspace:*
         version: link:../../packages/auth
@@ -147,6 +150,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.10.0
         version: 1.10.0
+      '@hono/trpc-server':
+        specifier: ^0.1.1
+        version: 0.1.1(hono@4.2.4)
       '@remix-run/dev':
         specifier: 2.8.1
         version: 2.8.1(@remix-run/serve@2.8.1)(@types/node@20.12.7)(typescript@5.4.5)(vite@5.2.8)
@@ -159,6 +165,15 @@ importers:
       '@remix-run/serve':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.5)
+      '@tanstack/react-query':
+        specifier: 5.29.2
+        version: 5.29.2(react@18.2.0)
+      '@trpc/client':
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
+      '@trpc/react-query':
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@tanstack/react-query@5.29.2)(@trpc/client@11.0.0-rc.348)(@trpc/server@11.0.0-rc.348)(react-dom@18.2.0)(react@18.2.0)
       hono:
         specifier: 4.2.4
         version: 4.2.4
@@ -183,6 +198,9 @@ importers:
       remix-i18next:
         specifier: 6.1.0
         version: 6.1.0(@remix-run/node@2.8.1)(@remix-run/react@2.8.1)(i18next@23.11.2)(react-i18next@14.1.0)(react@18.2.0)
+      superjson:
+        specifier: 2.2.1
+        version: 2.2.1
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3
@@ -214,6 +232,9 @@ importers:
       vite:
         specifier: 5.2.8
         version: 5.2.8(@types/node@20.12.7)
+      vite-tsconfig-paths:
+        specifier: ^4.3.2
+        version: 4.3.2(typescript@5.4.5)(vite@5.2.8)
 
   packages/api:
     dependencies:
@@ -227,8 +248,8 @@ importers:
         specifier: workspace:*
         version: link:../validators
       '@trpc/server':
-        specifier: 11.0.0-rc.334
-        version: 11.0.0-rc.334
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -3359,6 +3380,16 @@ packages:
     resolution: {integrity: sha512-XXFmIT4swUm3gG9yPU/HMAqHAHTP/Wr2mqgJakOFQhbbWipomaLu7ys0h9KrgF9032j18efBYk2aHz2SfgDbTA==}
     engines: {node: '>=18.14.1'}
 
+  /@hono/trpc-server@0.1.1(hono@4.2.4):
+    resolution: {integrity: sha512-JHfd5s2MKIu+ZT/gTi7ITZtGPhWbGogCxf0FcgQt+6ENnfameKZNXU1BCMJXzDWm5+AzyCvRMXAjYE+JgAktlw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@trpc/server': ^10.10.0
+      hono: '>=3.*'
+    dependencies:
+      hono: 4.2.4
+    dev: false
+
   /@hono/vite-dev-server@0.11.0(hono@4.2.4):
     resolution: {integrity: sha512-qFx7lCOtNFM4B7bATrsDvaqTTcjejwvKH0o5lwW34Nqerx/YPXgnEYVCi0uXu9HaapRpD2gs04AzuFZHdZNVRg==}
     engines: {node: '>=18.14.1'}
@@ -5132,8 +5163,8 @@ packages:
     resolution: {integrity: sha512-WgPTRs58hm9CMzEr5jpISe8HXa3qKQ8CxewdYZeVnA54JrPY9B1CZiwsCoLpLkf0dGRZq+LcX5OiJb0bEsOFww==}
     dev: false
 
-  /@tanstack/react-query@5.29.0(react@18.2.0):
-    resolution: {integrity: sha512-yxlhHB73jaBla6h5B6zPaGmQjokkzAhMHN4veotkPNiQ3Ac/mCxgABRZPsJJrgCTvhpcncBZcDBFxaR2B37vug==}
+  /@tanstack/react-query@5.29.2(react@18.2.0):
+    resolution: {integrity: sha512-nyuWILR4u7H5moLGSiifLh8kIqQDLNOHGuSz0rcp+J75fNc8aQLyr5+I2JCHU3n+nJrTTW1ssgAD8HiKD7IFBQ==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5145,32 +5176,32 @@ packages:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
     dev: true
 
-  /@trpc/client@11.0.0-rc.334(@trpc/server@11.0.0-rc.334):
-    resolution: {integrity: sha512-nVKOxCfhKxBXvs1MwjfNNsWHQH/rHWzS4SxYPtYld7zqANTfNqn8cuClHMKlkeMKljObFiCfWhbdrBamKO/dDw==}
+  /@trpc/client@11.0.0-rc.348(@trpc/server@11.0.0-rc.348):
+    resolution: {integrity: sha512-oT5Ja6OILVoquHhdH8mj18XDkK4UISqg969SITS1w5vHWtgE+ncb3XfeMC2QL+70W0ByZotE0CxLBK1JVfemcA==}
     peerDependencies:
-      '@trpc/server': 11.0.0-rc.334+fdf26e552
+      '@trpc/server': 11.0.0-rc.348+9d8b631a7
     dependencies:
-      '@trpc/server': 11.0.0-rc.334
+      '@trpc/server': 11.0.0-rc.348
     dev: false
 
-  /@trpc/react-query@11.0.0-rc.334(@tanstack/react-query@5.29.0)(@trpc/client@11.0.0-rc.334)(@trpc/server@11.0.0-rc.334)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-DvhU7qMfQkLyrhQoDlrtMAGIgJyin9I8WCsF0oGlAD95ygoJcviD8D+lQzSCUttul9rPcNqWDuGhm5laS7V43A==}
+  /@trpc/react-query@11.0.0-rc.348(@tanstack/react-query@5.29.2)(@trpc/client@11.0.0-rc.348)(@trpc/server@11.0.0-rc.348)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-JKJc8zWv7GEM9SNyzwWZLkE5cHgnLIdqXfuo+dChs2qdlBW1X654uwpDSiC0pyp3uW985yXhDisYUypCjCfB5Q==}
     peerDependencies:
       '@tanstack/react-query': ^5.25.0
-      '@trpc/client': 11.0.0-rc.334+fdf26e552
-      '@trpc/server': 11.0.0-rc.334+fdf26e552
+      '@trpc/client': 11.0.0-rc.348+9d8b631a7
+      '@trpc/server': 11.0.0-rc.348+9d8b631a7
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
-      '@tanstack/react-query': 5.29.0(react@18.2.0)
-      '@trpc/client': 11.0.0-rc.334(@trpc/server@11.0.0-rc.334)
-      '@trpc/server': 11.0.0-rc.334
+      '@tanstack/react-query': 5.29.2(react@18.2.0)
+      '@trpc/client': 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
+      '@trpc/server': 11.0.0-rc.348
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@11.0.0-rc.334:
-    resolution: {integrity: sha512-ckg+f4z3Lc0wYvm1Cx8Zjz8b2hguNlUFQeF8vLrtWYBL8HEolshmxOHMG9MLc6WDE6T1R7DZrG+xEwjI44XH9w==}
+  /@trpc/server@11.0.0-rc.348:
+    resolution: {integrity: sha512-Dht+pvQndlc0F3UTbD+R3dsZvB8VVRscmYfADlJHfbzwYuzs/U1McC5o2Ck7lnLgoCptTOfsqIQL9M3Tq4ZHHQ==}
     dev: false
 
   /@tsconfig/node10@1.0.10:
@@ -8861,6 +8892,10 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
     dev: false
+
+  /globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -14211,6 +14246,19 @@ packages:
     resolution: {integrity: sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==}
     dev: false
 
+  /tsconfck@3.0.3(typescript@5.4.5):
+    resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.4.5
+    dev: true
+
   /tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
     dependencies:
@@ -14767,6 +14815,23 @@ packages:
       - supports-color
       - terser
     dev: false
+
+  /vite-tsconfig-paths@4.3.2(typescript@5.4.5)(vite@5.2.8):
+    resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 3.0.3(typescript@5.4.5)
+      vite: 5.2.8(@types/node@20.12.7)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   /vite@5.2.8(@types/node@20.12.7):
     resolution: {integrity: sha512-OyZR+c1CE8yeHw5V5t59aXsUPPVTHMDjEZz8MgguLL/Q7NblxhZUlTu9xSPqlsUO/y+X7dlU05jdhvyycD55DA==}

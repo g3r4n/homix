@@ -1,8 +1,11 @@
+import type { AuthUser } from "@hono/auth-js";
 import Google from "@auth/core/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { AuthConfig } from "@hono/auth-js";
 
 import { db, tableCreator } from "@acme/db";
+
+export type Session = AuthUser["session"];
 
 export type AuthEnv = {
   AUTH_SECRET: string;

@@ -8,10 +8,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [
-        ".expo/**",
-        ".output/**",
-      ]
+      "outputs": [".expo/**", ".output/**"]
     },
     "dev": {
       "persistent": true,

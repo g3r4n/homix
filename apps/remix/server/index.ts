@@ -7,8 +7,8 @@ import { logger } from "hono/logger";
 // You can also use it with other runtimes
 import { remix } from "remix-hono/handler";
 
-import { appRouter, createTRPCContext } from "@acme/api";
 import { getAuthConfig } from "@acme/auth";
+import { appRouter, createTRPCContext } from "@acme/trpc";
 
 import { importDevBuild } from "./dev/server";
 

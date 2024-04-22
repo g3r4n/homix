@@ -93,7 +93,7 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
     devDependencies:
-      '@acme/api':
+      '@acme/trpc':
         specifier: workspace:*
         version: link:../../packages/api
       '@acme/eslint-config':
@@ -138,7 +138,7 @@ importers:
 
   apps/remix:
     dependencies:
-      '@acme/api':
+      '@acme/trpc':
         specifier: workspace:^
         version: link:../../packages/api
       '@acme/auth':

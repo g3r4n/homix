@@ -1,4 +1,4 @@
-import { authHandler, initAuthConfig } from "@hono/auth-js";
+import { authHandler, initAuthConfig, verifyAuth } from "@hono/auth-js";
 import { serve } from "@hono/node-server";
 import { trpcServer } from "@hono/trpc-server";
 import { AppLoadContext, ServerBuild } from "@remix-run/node";
@@ -41,25 +41,23 @@ honoRemixApp.use(
 
 honoRemixApp.use("/api/auth/*", authHandler());
 
-honoRemixApp.use(
-  "/api/trpc/*",
-  trpcServer({
+honoRemixApp.use("/api/trpc/*", verifyAuth());
+
+honoRemixApp.use("/api/trpc/*", async (c, next) => {
+  const authUser = c.get("authUser");
+  return trpcServer({
     endpoint: "/api/trpc",
     router: appRouter,
     createContext: (c) =>
       createTRPCContext({
-        // TO DO, fix seesions
-        session: {
-          user: undefined,
-          expires: new Date().toISOString(),
-        },
+        session: authUser.session,
         headers: c.req.headers,
       }),
     onError({ error, path }) {
       console.error(`>>> tRPC Error on '${path}'`, error);
     },
-  }),
-);
+  })(c, next);
+});
 
 /**
  * Add remix middleware to Hono server

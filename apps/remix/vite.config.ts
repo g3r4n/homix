@@ -5,6 +5,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   server: {
+    host: "0.0.0.0",
     port: 3000,
     // https://github.com/remix-run/remix/discussions/8917#discussioncomment-8640023
     warmup: {

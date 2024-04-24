@@ -1,4 +1,4 @@
-import { authHandler, initAuthConfig, verifyAuth } from "@hono/auth-js";
+import { authHandler, getAuthUser, initAuthConfig } from "@hono/auth-js";
 import { serve } from "@hono/node-server";
 import { trpcServer } from "@hono/trpc-server";
 import { AppLoadContext, ServerBuild } from "@remix-run/node";
@@ -41,16 +41,14 @@ honoRemixApp.use(
 
 honoRemixApp.use("/api/auth/*", authHandler());
 
-honoRemixApp.use("/api/trpc/*", verifyAuth());
-
 honoRemixApp.use("/api/trpc/*", async (c, next) => {
-  const authUser = c.get("authUser");
+  const authUser = await getAuthUser(c);
   return trpcServer({
     endpoint: "/api/trpc",
     router: appRouter,
     createContext: (c) =>
       createTRPCContext({
-        session: authUser.session,
+        session: authUser?.session ?? null,
         headers: c.req.headers,
       }),
     onError({ error, path }) {
@@ -90,6 +88,7 @@ if (isProductionMode) {
     {
       ...honoRemixApp,
       port: Number(process.env.PORT) || 3000,
+      hostname: "0.0.0.0",
     },
     async (info) => {
       console.log(`🚀 Server started on port ${info.port}`);

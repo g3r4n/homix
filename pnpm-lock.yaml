@@ -189,6 +189,9 @@ importers:
       isbot:
         specifier: '4'
         version: 4.4.0
+      lucide-react:
+        specifier: ^0.373.0
+        version: 0.373.0(react@18.2.0)
       next-auth:
         specifier: 5.0.0-beta.16
         version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
@@ -204,6 +207,9 @@ importers:
       remix-i18next:
         specifier: 6.1.0
         version: 6.1.0(@remix-run/node@2.8.1(typescript@5.4.5))(@remix-run/react@2.8.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5))(i18next@23.11.2)(react-i18next@14.1.0(i18next@23.11.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      remix-theme:
+        specifier: ^0.0.4
+        version: 0.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -6215,6 +6221,11 @@ packages:
   lru-queue@0.1.0:
     resolution: {integrity: sha512-BpdYkt9EvGl8OfWHDQPISVpcl5xZthb+XPsbELj5AQXxIC8IriDZIQYjBJPEm5rS420sjZ0TLEzRcq5KdBhYrQ==}
 
+  lucide-react@0.373.0:
+    resolution: {integrity: sha512-0kygFhk/DmK4mi+zf1t5mNStJQGaElACZdDdLiHOHFJzi7g3maC3SR86AcaUsxvDkZPId3XCd4vRngnjkPHu3Q==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
@@ -7622,6 +7633,12 @@ packages:
         optional: true
       '@remix-run/node':
         optional: true
+
+  remix-theme@0.0.4:
+    resolution: {integrity: sha512-dastCCVjEMcpzWMWW/50NELx3raWawsc3aNaziu90ze7+9+M5HxhreBkuuguisgWv3n/xWKSoDnkDT0GhTXXxA==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
 
   remove-trailing-slash@0.1.1:
     resolution: {integrity: sha512-o4S4Qh6L2jpnCy83ysZDau+VORNvnFw07CKSAymkd6ICNVEPisMyzlc00KlvvicsxKck94SEwhDnMNdICzO+tA==}
@@ -15498,6 +15515,10 @@ snapshots:
     dependencies:
       es5-ext: 0.10.64
 
+  lucide-react@0.373.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+
   make-dir@2.1.0:
     dependencies:
       pify: 4.0.1
@@ -17267,6 +17288,11 @@ snapshots:
       react-i18next: 14.1.0(i18next@23.11.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     optionalDependencies:
       '@remix-run/node': 2.8.1(typescript@5.4.5)
+
+  remix-theme@0.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   remove-trailing-slash@0.1.1: {}
 

@@ -9,6 +9,7 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "remix-theme";
 
 import styles from "./tailwind.css?url";
 
@@ -25,30 +26,32 @@ export default function App() {
   return (
     <SessionProvider>
       <TRPCProvider>
-        <html>
-          <head>
-            <link rel="icon" href="data:image/x-icon;base64,AA" />
-            <Meta />
-            <Links />
-          </head>
-          <body>
-            <Outlet />
+        <ThemeProvider attribute="class" enableSystem>
+          <html>
+            <head>
+              <link rel="icon" href="data:image/x-icon;base64,AA" />
+              <Meta />
+              <Links />
+            </head>
+            <body>
+              <Outlet />
 
-            <script
-              // NextAuth session provider reads window.process.env.NEXTAUTH_URL, so
-              // is using, then you'll need to set it here, else will fail.
-              // credit: https://sergiodxa.com/articles/use-process-env-client-side-with-remix
-              dangerouslySetInnerHTML={{
-                __html: `window.process = ${JSON.stringify({
-                  env: {
-                    NEXTAUTH_URL,
-                  },
-                })}`,
-              }}
-            />
-            <Scripts />
-          </body>
-        </html>
+              <script
+                // NextAuth session provider reads window.process.env.NEXTAUTH_URL, so
+                // is using, then you'll need to set it here, else will fail.
+                // credit: https://sergiodxa.com/articles/use-process-env-client-side-with-remix
+                dangerouslySetInnerHTML={{
+                  __html: `window.process = ${JSON.stringify({
+                    env: {
+                      NEXTAUTH_URL,
+                    },
+                  })}`,
+                }}
+              />
+              <Scripts />
+            </body>
+          </html>
+        </ThemeProvider>
       </TRPCProvider>
     </SessionProvider>
   );

@@ -32,8 +32,6 @@ export default function App() {
             <Links />
           </head>
           <body>
-            <h1 className="text-4xl">Hello world!</h1>
-            <span className="text-red-500">Powered by Homix</span>
             <Outlet />
 
             <script

@@ -1,3 +1,5 @@
+import { PostCreationButton } from "@/components/PostCreationButton";
+import { PostTable } from "@/components/PostTable";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { trpc } from "@/utils/trpc";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -53,9 +55,10 @@ export default function RootPage() {
           <ThemeSwitcher />
         </div>
       </div>
-      <div>
-        {posts.data?.map((post) => <div key={post.id}>{post.title}</div>)}
+      <div className="flex w-full justify-end p-4">
+        <PostCreationButton />
       </div>
+      <PostTable />
     </div>
   );
 }

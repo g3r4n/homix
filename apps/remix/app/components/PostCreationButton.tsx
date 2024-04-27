@@ -1,3 +1,5 @@
+import { useSession } from "next-auth/react";
+
 import { Button } from "@acme/ui/button";
 import {
   Dialog,
@@ -11,12 +13,36 @@ import {
 import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 import { Textarea } from "@acme/ui/textarea";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@acme/ui/tooltip";
 
 export function PostCreationButton() {
+  const { data } = useSession();
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="secondary">Create post</Button>
+      <DialogTrigger asChild disabled={!data?.user}>
+        {!data?.user ? (
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger className="cursor-not-allowed">
+                <Button variant="secondary" disabled={!data?.user}>
+                  Create post
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left" align="center">
+                <p className="text-sm">
+                  You need to be logged in, to create a post
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ) : (
+          <Button variant="secondary">Create post</Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

@@ -1,14 +1,12 @@
 import { PostCreationButton } from "@/components/PostCreationButton";
 import { PostTable } from "@/components/PostTable";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { trpc } from "@/utils/trpc";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { Button } from "@acme/ui/button";
 
 export default function RootPage() {
   const { status } = useSession();
-  const posts = trpc.post.all.useQuery();
   return (
     <div className="h-screen w-screen">
       <div className="flex justify-between border-b  p-4">

@@ -8,8 +8,9 @@ import {
   Scripts,
   useLoaderData,
 } from "@remix-run/react";
-/*import GeistMono from "geist/font/mono"; 
-import GeistSans from "geist/font/sans"; */
+
+import "non.geist";
+
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "remix-theme";
 
@@ -35,8 +36,7 @@ export default function App() {
               <Meta />
               <Links />
             </head>
-            <body /* className={`${GeistSans.variable} ${GeistMono.variable}`} */
-            >
+            <body>
               <Outlet />
 
               <script

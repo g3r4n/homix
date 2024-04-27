@@ -8,7 +8,6 @@ import {
 } from "@tanstack/react-table";
 
 import { RouterOutputs } from "@acme/trpc";
-import { Button } from "@acme/ui/button";
 import {
   Table,
   TableBody,

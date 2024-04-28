@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 
-import { Button } from "@acme/ui/button";
+import { cn } from "@acme/ui";
+import { Button, buttonVariants } from "@acme/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -28,10 +29,13 @@ export function PostCreationButton() {
         {!data?.user ? (
           <TooltipProvider>
             <Tooltip delayDuration={0}>
-              <TooltipTrigger className="cursor-not-allowed">
-                <Button variant="secondary" disabled={!data?.user}>
-                  Create post
-                </Button>
+              <TooltipTrigger
+                className={cn(
+                  buttonVariants({ variant: "secondary" }),
+                  "cursor-not-allowed opacity-50",
+                )}
+              >
+                Create post
               </TooltipTrigger>
               <TooltipContent side="left" align="center">
                 <p className="text-sm">

@@ -8,9 +8,6 @@ import {
   Scripts,
   useLoaderData,
 } from "@remix-run/react";
-
-import "non.geist";
-
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "remix-theme";
 

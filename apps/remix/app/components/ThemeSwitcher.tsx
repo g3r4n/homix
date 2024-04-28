@@ -1,9 +1,10 @@
+import { ReactNode } from "react";
 import { MoonStar, Sun } from "lucide-react";
 import { useTheme } from "remix-theme";
 
 import { Button } from "@acme/ui/button";
 
-export default function ThemeSwitcher() {
+export default () => {
   const { resolvedTheme, setTheme } = useTheme();
 
   return (
@@ -17,4 +18,4 @@ export default function ThemeSwitcher() {
       {resolvedTheme === "dark" ? <Sun /> : <MoonStar />}
     </Button>
   );
-}
+};

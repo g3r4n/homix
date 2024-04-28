@@ -23,30 +23,30 @@ import {
 
 export function PostCreationButton() {
   const { data } = useSession();
+  if (!data?.user)
+    return (
+      <TooltipProvider>
+        <Tooltip delayDuration={0}>
+          <TooltipTrigger
+            className={cn(
+              buttonVariants({ variant: "secondary" }),
+              "cursor-not-allowed opacity-50",
+            )}
+          >
+            Create post
+          </TooltipTrigger>
+          <TooltipContent side="left" align="center">
+            <p className="text-sm">
+              You need to be logged in, to create a post
+            </p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
   return (
     <Dialog>
       <DialogTrigger asChild disabled={!data?.user}>
-        {!data?.user ? (
-          <TooltipProvider>
-            <Tooltip delayDuration={0}>
-              <TooltipTrigger
-                className={cn(
-                  buttonVariants({ variant: "secondary" }),
-                  "cursor-not-allowed opacity-50",
-                )}
-              >
-                Create post
-              </TooltipTrigger>
-              <TooltipContent side="left" align="center">
-                <p className="text-sm">
-                  You need to be logged in, to create a post
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        ) : (
-          <Button variant="secondary">Create post</Button>
-        )}
+        <Button variant="secondary">Create post</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

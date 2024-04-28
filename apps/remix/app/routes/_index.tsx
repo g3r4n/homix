@@ -2,6 +2,7 @@ import { PostCreationButton } from "@/components/PostCreationButton";
 import { PostTable } from "@/components/PostTable";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { ClientOnly } from "remix-utils/client-only";
 
 import { Button } from "@acme/ui/button";
 
@@ -50,7 +51,7 @@ export default function RootPage() {
               Signout
             </Button>
           )}
-          <ThemeSwitcher />
+          <ClientOnly>{() => <ThemeSwitcher />}</ClientOnly>
         </div>
       </div>
       <div className="flex w-full justify-end p-4">

@@ -43,7 +43,6 @@
     "hono": "4.2.4",
     "i18next": "23.11.2",
     "isbot": "4",
-    "lucide-react": "^0.373.0",
     "next-auth": "5.0.0-beta.16",
     "non.geist": "^1.0.3",
     "react": "18.2.0",

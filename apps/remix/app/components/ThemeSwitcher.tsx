@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { MoonStar, Sun } from "lucide-react";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "remix-theme";
 
 import { Button } from "@acme/ui/button";
@@ -15,7 +14,7 @@ export default () => {
       }}
       className="p-2"
     >
-      {resolvedTheme === "dark" ? <Sun /> : <MoonStar />}
+      {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
 };

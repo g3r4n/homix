@@ -182,10 +182,10 @@ importers:
         version: 8.16.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/client':
         specifier: 11.0.0-rc.348
-        version: 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
+        version: 11.0.0-rc.348
       '@trpc/react-query':
         specifier: 11.0.0-rc.348
-        version: 11.0.0-rc.348(@tanstack/react-query@5.29.2(react@18.2.0))(@trpc/client@11.0.0-rc.348(@trpc/server@11.0.0-rc.348))(@trpc/server@11.0.0-rc.348)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 11.0.0-rc.348(@tanstack/react-query@5.29.2(react@18.2.0))(@trpc/client@11.0.0-rc.348)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -198,12 +198,9 @@ importers:
       isbot:
         specifier: '4'
         version: 4.4.0
-      lucide-react:
-        specifier: ^0.373.0
-        version: 0.373.0(react@18.2.0)
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       non.geist:
         specifier: ^1.0.3
         version: 1.0.3
@@ -6253,11 +6250,6 @@ packages:
   lru-queue@0.1.0:
     resolution: {integrity: sha512-BpdYkt9EvGl8OfWHDQPISVpcl5xZthb+XPsbELj5AQXxIC8IriDZIQYjBJPEm5rS420sjZ0TLEzRcq5KdBhYrQ==}
 
-  lucide-react@0.373.0:
-    resolution: {integrity: sha512-0kygFhk/DmK4mi+zf1t5mNStJQGaElACZdDdLiHOHFJzi7g3maC3SR86AcaUsxvDkZPId3XCd4vRngnjkPHu3Q==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
@@ -12291,6 +12283,8 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
+  '@trpc/client@11.0.0-rc.348': {}
+
   '@trpc/client@11.0.0-rc.348(@trpc/server@11.0.0-rc.348)':
     dependencies:
       '@trpc/server': 11.0.0-rc.348
@@ -12300,6 +12294,13 @@ snapshots:
       '@tanstack/react-query': 5.29.2(react@18.2.0)
       '@trpc/client': 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
       '@trpc/server': 11.0.0-rc.348
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@trpc/react-query@11.0.0-rc.348(@tanstack/react-query@5.29.2(react@18.2.0))(@trpc/client@11.0.0-rc.348)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@tanstack/react-query': 5.29.2(react@18.2.0)
+      '@trpc/client': 11.0.0-rc.348
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
@@ -15598,10 +15599,6 @@ snapshots:
     dependencies:
       es5-ext: 0.10.64
 
-  lucide-react@0.373.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-
   make-dir@2.1.0:
     dependencies:
       pify: 4.0.1
@@ -16319,6 +16316,12 @@ snapshots:
   nested-error-stacks@2.0.1: {}
 
   netmask@2.0.2: {}
+
+  next-auth@5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+    dependencies:
+      '@auth/core': 0.28.1
+      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
 
   next-auth@5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:

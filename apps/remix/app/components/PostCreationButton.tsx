@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { trpc } from "@/utils/trpc";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { cn } from "@acme/ui";
 import { Button, buttonVariants } from "@acme/ui/button";
@@ -11,6 +16,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@acme/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@acme/ui/form";
 import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 import { Textarea } from "@acme/ui/textarea";
@@ -21,8 +35,35 @@ import {
   TooltipTrigger,
 } from "@acme/ui/tooltip";
 
+import { ButtonLoading } from "./ButtonLoading";
+
+const formSchema = z.object({
+  title: z.string(),
+  content: z.string(),
+});
+
 export function PostCreationButton() {
+  const [openModal, setOpenModal] = useState(false);
   const { data } = useSession();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      content: "",
+    },
+  });
+  const postCreationMutation = trpc.post.create.useMutation();
+  const trpcUtils = trpc.useUtils();
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    postCreationMutation.mutate(values, {
+      onSuccess: () => {
+        trpcUtils.post.all.invalidate();
+        form.reset();
+        setOpenModal(false);
+      },
+    });
+  }
+
   if (!data?.user)
     return (
       <TooltipProvider>
@@ -44,7 +85,7 @@ export function PostCreationButton() {
       </TooltipProvider>
     );
   return (
-    <Dialog>
+    <Dialog open={openModal} onOpenChange={setOpenModal}>
       <DialogTrigger asChild disabled={!data?.user}>
         <Button variant="secondary">Create post</Button>
       </DialogTrigger>
@@ -56,23 +97,53 @@ export function PostCreationButton() {
             you're done.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="title" className="text-right">
-              Title
-            </Label>
-            <Input id="title" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="content" className="text-right">
-              Content
-            </Label>
-            <Textarea id="content" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Create</Button>
-        </DialogFooter>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <div className="grid gap-4 py-4">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Title</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="post title"
+                        {...field}
+                        className="col-span-3"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="content"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Content</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="post content"
+                        {...field}
+                        className="col-span-3"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <DialogFooter>
+              {postCreationMutation.isPending ? (
+                <ButtonLoading>Creating...</ButtonLoading>
+              ) : (
+                <Button type="submit">Create</Button>
+              )}
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );

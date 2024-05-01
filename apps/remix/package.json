@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm with-env remix vite:dev",
     "build": "remix vite:build",
-    "serve": "remix-serve build/server/index.js",
+    "serve": "NODE_ENV=production pnpm with-env tsx --watch ./server/index.ts",
     "lint": "eslint",
     "with-env": "dotenv -e ../../.env --"
   },
@@ -19,6 +19,7 @@
     "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.25",
     "dotenv-cli": "^7.4.1",
+    "tsx": "^4.8.2",
     "vite": "5.2.8",
     "vite-tsconfig-paths": "^4.3.2"
   },

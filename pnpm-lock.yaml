@@ -259,6 +259,9 @@ importers:
       dotenv-cli:
         specifier: ^7.4.1
         version: 7.4.1
+      tsx:
+        specifier: ^4.8.2
+        version: 4.8.2
       vite:
         specifier: 5.2.8
         version: 5.2.8(@types/node@20.12.7)(lightningcss@1.22.0)(terser@5.30.4)
@@ -8391,6 +8394,11 @@ packages:
 
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+
+  tsx@4.8.2:
+    resolution: {integrity: sha512-hmmzS4U4mdy1Cnzpl/NQiPUC2k34EcNSTZYVJThYKhdqTwuBeF+4cG9KUK/PFQ7KHaAaYwqlb7QfmsE2nuj+WA==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   turbo-darwin-64@1.13.2:
     resolution: {integrity: sha512-CCSuD8CfmtncpohCuIgq7eAzUas0IwSbHfI8/Q3vKObTdXyN8vAo01gwqXjDGpzG9bTEVedD0GmLbD23dR0MLA==}
@@ -18134,6 +18142,13 @@ snapshots:
   tslib@2.4.0: {}
 
   tslib@2.6.2: {}
+
+  tsx@4.8.2:
+    dependencies:
+      esbuild: 0.20.2
+      get-tsconfig: 4.7.3
+    optionalDependencies:
+      fsevents: 2.3.3
 
   turbo-darwin-64@1.13.2:
     optional: true

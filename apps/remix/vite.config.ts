@@ -10,7 +10,7 @@ export default defineConfig({
     // https://github.com/remix-run/remix/discussions/8917#discussioncomment-8640023
     warmup: {
       clientFiles: [
-        // "./app/entry.client.tsx",
+        "./app/entry.client.tsx",
         "./app/root.tsx",
         "./app/routes/**/*",
       ],
@@ -27,6 +27,8 @@ export default defineConfig({
       exclude: [/^\/(app)\/.+/, /^\/@.+$/, /^\/node_modules\/.*/],
     }),
     tsconfigPaths(),
-    remix(),
+    remix({
+      serverBuildFile: "remix.js",
+    }),
   ],
 });

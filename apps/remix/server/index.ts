@@ -1,5 +1,6 @@
 import { authHandler, getAuthUser, initAuthConfig } from "@hono/auth-js";
 import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
 import { trpcServer } from "@hono/trpc-server";
 import { AppLoadContext, ServerBuild } from "@remix-run/node";
 import { Hono } from "hono";
@@ -26,6 +27,21 @@ const mode =
 const isProductionMode = mode === "production";
 
 const honoRemixApp = new Hono<ContextEnv>();
+
+/**
+ * Serve assets files from build/client/assets
+ */
+isProductionMode &&
+  honoRemixApp.use("/assets/*", serveStatic({ root: "./build/client" }));
+
+/**
+ * Serve public files
+ */
+isProductionMode &&
+  honoRemixApp.use(
+    "*",
+    serveStatic({ root: isProductionMode ? "./build/client" : "./public" }),
+  ); // 1 hour
 
 /**
  * Add logger middleware

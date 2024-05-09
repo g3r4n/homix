@@ -41,6 +41,7 @@
     "@trpc/client": "11.0.0-rc.348",
     "@trpc/react-query": "11.0.0-rc.348",
     "autoprefixer": "^10.4.19",
+    "esbuild": "^0.21.1",
     "hono": "4.2.4",
     "i18next": "23.11.2",
     "isbot": "4",

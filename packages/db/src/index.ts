@@ -9,7 +9,6 @@ export const schema = { ...auth, ...post };
 export { pgTable as tableCreator } from "./schema/_table";
 
 export * from "drizzle-orm/sql";
-export { alias } from "drizzle-orm/mysql-core";
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set");

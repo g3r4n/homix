@@ -1,5 +1,5 @@
-# TODO
-- to migrate to use theme from remix packages/ui/src/theme.tsx
+# install
+pnpm install
 
 # create postgresql database
 docker run --name homix-db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres

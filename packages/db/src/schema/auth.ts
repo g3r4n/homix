@@ -7,7 +7,7 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { type AdapterAccount } from "next-auth/adapters";
+import type {AdapterAccount} from "next-auth/adapters";
 
 import { pgTable } from "./_table";
 

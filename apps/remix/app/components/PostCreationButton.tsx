@@ -85,7 +85,7 @@ export function PostCreationButton() {
     );
   return (
     <Dialog open={openModal} onOpenChange={setOpenModal}>
-      <DialogTrigger asChild disabled={!data?.user}>
+      <DialogTrigger asChild disabled={!data.user}>
         <Button variant="secondary">Create post</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

@@ -1,6 +1,6 @@
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
-import { AppLoadContext, ServerBuild } from "@remix-run/node";
+import type { AppLoadContext, ServerBuild } from "@remix-run/node";
 import { remix } from "remix-hono/handler";
 
 import honoRemixApp from "./app";
@@ -14,7 +14,7 @@ honoRemixApp.use(async (c, next) => {
   const build = (isProductionMode
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      // eslint-disable-next-line import/no-unresolved -- this expected until you build the app
+       
       await import("../build/server/remix.js")
     : await importDevBuild()) as unknown as ServerBuild;
 

@@ -14,7 +14,7 @@ export default {
   schema: "./src/schema",
   driver: "pg",
   dbCredentials: {
-    connectionString: env.DATABASE_URL!,
+    connectionString: env.DATABASE_URL,
   },
   tablesFilter: ["homix_*"],
 } satisfies Config;

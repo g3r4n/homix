@@ -1,13 +1,14 @@
 import * as React from "react";
 import { trpc } from "@/utils/trpc";
+import type {
+  ColumnDef} from "@tanstack/react-table";
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
-import { RouterOutputs } from "@acme/trpc";
+import type { RouterOutputs } from "@acme/trpc";
 import {
   Table,
   TableBody,
@@ -68,7 +69,7 @@ export function PostTable() {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}

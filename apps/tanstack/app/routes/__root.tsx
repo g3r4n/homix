@@ -8,6 +8,8 @@ import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 
 import "../../styles/app.css";
 
+import { SessionProvider } from "next-auth/react";
+
 export const Route = createRootRoute({
   meta: () => [
     {
@@ -39,7 +41,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Meta />
       </Head>
       <Body>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
         <ScrollRestoration />
         <Scripts />
       </Body>

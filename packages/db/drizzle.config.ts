@@ -12,9 +12,9 @@ const env = createEnv({
 
 export default {
   schema: "./src/schema",
-  driver: "pg",
+  dialect: "postgresql",
   dbCredentials: {
-    connectionString: env.DATABASE_URL,
+    url: env.DATABASE_URL,
   },
   tablesFilter: ["homix_*"],
 } satisfies Config;

@@ -13,8 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@acme/ui": "workspace:*",
     "@acme/auth": "workspace:*",
+    "@acme/ui": "workspace:*",
     "@auth/core": "^0.28.0",
     "@tanstack/react-router": "^1.58.3",
     "@tanstack/start": "^1.58.5",

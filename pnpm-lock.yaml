@@ -203,7 +203,7 @@ importers:
         version: 4.4.0
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       non.geist:
         specifier: ^1.0.3
         version: 1.0.3
@@ -274,9 +274,15 @@ importers:
 
   apps/tanstack:
     dependencies:
+      '@acme/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@auth/core':
+        specifier: ^0.28.0
+        version: 0.28.1
       '@tanstack/react-router':
         specifier: ^1.58.3
         version: 1.58.3(@tanstack/router-generator@1.58.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -287,10 +293,10 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1(vite@5.2.8(@types/node@20.12.7)(lightningcss@1.22.0)(stylus@0.51.1)(terser@5.30.4))
       arctic:
-        specifier: ^1.9.2
+        specifier: 1.9.2
         version: 1.9.2
       lucia:
-        specifier: ^3.2.0
+        specifier: 3.2.0
         version: 3.2.0
       react:
         specifier: 18.2.0
@@ -380,7 +386,7 @@ importers:
         version: 0.33.0(@types/react@18.2.77)(knex@0.8.6)(postgres@3.4.4)(react@18.2.0)
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       postgres:
         specifier: 3.4.4
         version: 3.4.4
@@ -19770,7 +19776,7 @@ snapshots:
 
   netmask@2.0.2: {}
 
-  next-auth@5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+  next-auth@5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@auth/core': 0.28.1
       next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)

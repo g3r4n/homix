@@ -12,7 +12,7 @@ function AboutComponent() {
   return (
     <div className="flex h-screen w-screen items-center justify-center">
       <div className="flex flex-col gap-2 rounded border p-8">
-        {session.data.user ? (
+        {session.status === "authenticated" && session.data.user ? (
           <Button onClick={() => signOut()}>
             Log out as {session.data.user.name}
           </Button>

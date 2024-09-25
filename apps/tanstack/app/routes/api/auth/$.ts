@@ -7,4 +7,7 @@ export const Route = createAPIFileRoute("/api/auth/$")({
   GET: ({ request }) => {
     return Auth(request, getAuthConfig());
   },
+  POST: ({ request }) => {
+    return Auth(request, getAuthConfig());
+  },
 });

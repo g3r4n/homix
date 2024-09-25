@@ -1,7 +1,6 @@
-import type { AuthUser } from "@hono/auth-js";
+import type { AuthConfig, AuthUser } from "@hono/auth-js";
 import Google from "@auth/core/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import type { AuthConfig } from "@hono/auth-js";
 
 import { db, tableCreator } from "@acme/db";
 
@@ -15,6 +14,8 @@ export interface AuthEnv {
 
 export const getAuthConfig = () => {
   return {
+    basePath: "/api/auth",
+    trustHost: true,
     secret: process.env.AUTH_SECRET,
     adapter: DrizzleAdapter(db, tableCreator),
     providers: [

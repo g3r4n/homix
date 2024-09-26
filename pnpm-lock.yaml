@@ -203,7 +203,7 @@ importers:
         version: 4.4.0
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       non.geist:
         specifier: ^1.0.3
         version: 1.0.3
@@ -277,37 +277,67 @@ importers:
       '@acme/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@acme/trpc':
+        specifier: workspace:^
+        version: link:../../packages/trpc
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@auth/core':
         specifier: ^0.28.0
         version: 0.28.1
+      '@radix-ui/react-icons':
+        specifier: ^1.3.0
+        version: 1.3.0(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: 5.29.2
+        version: 5.29.2(react@18.2.0)
       '@tanstack/react-router':
         specifier: ^1.58.3
         version: 1.58.3(@tanstack/router-generator@1.58.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tanstack/start':
         specifier: ^1.58.5
         version: 1.58.5(@types/node@20.12.7)(ioredis@5.4.1)(lightningcss@1.22.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(stylus@0.51.1)(terser@5.30.4)(typescript@5.4.5)(vite@5.2.8(@types/node@20.12.7)(lightningcss@1.22.0)(stylus@0.51.1)(terser@5.30.4))
+      '@trpc/client':
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@trpc/server@11.0.0-rc.348)
+      '@trpc/react-query':
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348(@tanstack/react-query@5.29.2(react@18.2.0))(@trpc/client@11.0.0-rc.348(@trpc/server@11.0.0-rc.348))(@trpc/server@11.0.0-rc.348)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@trpc/server':
+        specifier: 11.0.0-rc.348
+        version: 11.0.0-rc.348
       '@vitejs/plugin-react':
         specifier: ^4.3.1
         version: 4.3.1(vite@5.2.8(@types/node@20.12.7)(lightningcss@1.22.0)(stylus@0.51.1)(terser@5.30.4))
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      superjson:
+        specifier: 2.2.1
+        version: 2.2.1
       vinxi:
         specifier: ^0.4.3
         version: 0.4.3(@types/node@20.12.7)(ioredis@5.4.1)(lightningcss@1.22.0)(stylus@0.51.1)(terser@5.30.4)
+      zod:
+        specifier: 3.23.8
+        version: 3.23.8
     devDependencies:
       '@acme/tailwind-config':
         specifier: workspace:*
         version: link:../../tooling/tailwind
+      '@hookform/resolvers':
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.51.1(react@18.2.0))
+      '@tanstack/react-table':
+        specifier: ^8.16.0
+        version: 8.16.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@types/react':
         specifier: ^18.2.77
         version: 18.2.77
@@ -323,6 +353,9 @@ importers:
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
+      react-hook-form:
+        specifier: ^7.51.1
+        version: 7.51.1(react@18.2.0)
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5))
@@ -386,7 +419,7 @@ importers:
         version: 0.33.0(@types/react@18.2.77)(knex@0.8.6)(postgres@3.4.4)(react@18.2.0)
       next-auth:
         specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       postgres:
         specifier: 3.4.4
         version: 3.4.4
@@ -10620,9 +10653,6 @@ packages:
     resolution: {integrity: sha512-zK7YHHz4ZXpW89AHXUPbQVGKI7uvkd3hzusTdotCg1UxyaVtg0zFJSTfW/Dq5f7OBBVnq6cZIaC8Ti4hb6dtCA==}
     engines: {node: '>= 14'}
 
-  zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
@@ -19225,10 +19255,16 @@ snapshots:
 
   netmask@2.0.2: {}
 
-  next-auth@5.0.0-beta.16(next@14.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+  next-auth@5.0.0-beta.16(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@auth/core': 0.28.1
       next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+
+  next-auth@5.0.0-beta.16(next@14.2.2(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+    dependencies:
+      '@auth/core': 0.28.1
+      next: 14.2.2(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
 
   next-themes@0.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
@@ -19247,6 +19283,31 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(@babel/core@7.24.4)(react@18.2.0)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 14.2.2
+      '@next/swc-darwin-x64': 14.2.2
+      '@next/swc-linux-arm64-gnu': 14.2.2
+      '@next/swc-linux-arm64-musl': 14.2.2
+      '@next/swc-linux-x64-gnu': 14.2.2
+      '@next/swc-linux-x64-musl': 14.2.2
+      '@next/swc-win32-arm64-msvc': 14.2.2
+      '@next/swc-win32-ia32-msvc': 14.2.2
+      '@next/swc-win32-x64-msvc': 14.2.2
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  next@14.2.2(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      '@next/env': 14.2.2
+      '@swc/helpers': 0.5.5
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001662
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      styled-jsx: 5.1.1(@babel/core@7.25.2)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.2
       '@next/swc-darwin-x64': 14.2.2
@@ -21091,6 +21152,13 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.24.4
 
+  styled-jsx@5.1.1(@babel/core@7.25.2)(react@18.2.0):
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+    optionalDependencies:
+      '@babel/core': 7.25.2
+
   stylus@0.51.1:
     dependencies:
       css-parse: 1.7.0
@@ -21856,7 +21924,7 @@ snapshots:
       unenv: 1.10.0
       unstorage: 1.12.0(ioredis@5.4.1)
       vite: 5.2.8(@types/node@20.12.7)(lightningcss@1.22.0)(stylus@0.51.1)(terser@5.30.4)
-      zod: 3.22.4
+      zod: 3.23.8
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -22165,8 +22233,6 @@ snapshots:
       archiver-utils: 5.0.2
       compress-commons: 6.0.2
       readable-stream: 4.5.2
-
-  zod@3.22.4: {}
 
   zod@3.23.8: {}
 

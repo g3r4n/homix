@@ -1,6 +1,4 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import * as React from "react";
-import { trpc } from "@/utils/trpc";
 import {
   flexRender,
   getCoreRowModel,
@@ -16,6 +14,8 @@ import {
   TableHeader,
   TableRow,
 } from "@acme/ui/table";
+
+import { trpc } from "../router";
 
 type Post = RouterOutputs["post"]["all"][number];
 

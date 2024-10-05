@@ -5,8 +5,13 @@ import { Button } from "@acme/ui/button";
 
 import { PostCreationButton } from "../components/PostCreationButton";
 import { PostTable } from "../components/PostTable";
+import { RouterAppContext } from "../router";
 
 export const Route = createFileRoute("/login")({
+  loader: async ({ context }) => {
+    const { trpcQueryUtils } = context as RouterAppContext;
+    await trpcQueryUtils.post.all.ensureData();
+  },
   component: LoginComponent,
 });
 
